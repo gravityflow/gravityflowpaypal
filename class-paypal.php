@@ -133,9 +133,8 @@ if ( class_exists( 'GFForms' ) ) {
 		}
 
 		public function filter_gravityflow_permission_denied_message_entry_detail( $message, $current_step ) {
-			$instance = gf_paypal();
 
-			if ( ! $instance->is_gravityforms_supported() ) {
+			if ( ! $this->is_gravityforms_supported() ) {
 				return $message;
 			}
 

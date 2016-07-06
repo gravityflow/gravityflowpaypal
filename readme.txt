@@ -44,6 +44,9 @@ The Gravity Flow PayPal Extension will work with any license of [Gravity Flow](h
 
 == ChangeLog ==
 
+= 1.0.1.1 =
+- Fixed PHP notice.
+
 = 1.0.1 =
 - Added support for the step_status="false" shortcode attribute.
 

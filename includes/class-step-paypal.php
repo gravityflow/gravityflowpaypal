@@ -129,6 +129,20 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 					'default_value' => '',
 				),
 				array(
+					'name'    => 'assignee_notification_autoformat',
+					'label'   => '',
+					'type'    => 'checkbox',
+					'choices' => array(
+						array(
+							'label'         => __( 'Disable auto-formatting', 'gravityflowpaypal' ),
+							'name'          => 'assignee_notification_disable_autoformat',
+							'default_value' => false,
+							'tooltip'       => __( 'Disable auto-formatting to prevent paragraph breaks being automatically inserted when using HTML to create the email message.', 'gravityflowpaypal' ),
+
+						),
+					),
+				),
+				array(
 					'name' => 'resend_assignee_email',
 					'label' => __( 'Send reminder', 'gravityflowpaypal' ),
 					'type' => 'checkbox_and_text',

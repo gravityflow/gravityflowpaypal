@@ -184,12 +184,35 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 			return $complete;
 		}
 
-		public function get_status() {
-
+		/**
+		 * @todo Remove once min Gravity Flow version reaches 1.4.2.
+		 */
+		public function evaluate_status() {
 			if ( $this->is_queued() ) {
 				return 'queued';
 			}
 
+			if ( $this->is_expired() ) {
+				return $this->get_expiration_status_key();
+			}
+
+			$status = $this->get_status();
+
+			if ( empty( $status ) ) {
+				return 'pending';
+			}
+
+			return $this->status_evaluation();
+		}
+
+		/**
+		 * Evaluates the status for the step.
+		 *
+		 * The step is only complete when the assignee status has been updated to complete by the gform_paypal_fulfillment hook.
+		 *
+		 * @return string 'pending' or 'complete'
+		 */
+		public function status_evaluation() {
 			$assignee_details = $this->get_assignees();
 
 			$step_status = 'complete';

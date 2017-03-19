@@ -33,129 +33,31 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 
 			$settings = parent::get_settings();
 
-			$account_choices = gravity_flow()->get_users_as_choices();
+			if ( ! $this->is_supported() ) {
+				return $settings;
+			}
+
+			$settings_api = $this->get_common_settings_api();
 
 			$paypal_settings = array(
+				$settings_api->get_setting_assignee_type(),
+				$settings_api->get_setting_assignees(),
+				$settings_api->get_setting_assignee_routing(),
+				$settings_api->get_setting_instructions(),
+				$settings_api->get_setting_display_fields(),
+				$settings_api->get_setting_notification_tabs( array(
+					array(
+						'label'  => __( 'Assignee Email', 'gravityflow' ),
+						'id'     => 'tab_assignee_notification',
+						'fields' => $settings_api->get_setting_notification( array(
+							'resend_enabled' => true,
+						) ),
+					)
+				) ),
 				array(
-					'name'       => 'type',
-					'label'      => __( 'Assign To:', 'gravityflowpaypal' ),
-					'type'       => 'radio',
-					'default_value' => 'select',
-					'horizontal' => true,
-					'choices'    => array(
-						array( 'label' => __( 'Select Users', 'gravityflowpaypal' ), 'value' => 'select' ),
-						array( 'label' => __( 'Conditional Routing', 'gravityflowpaypal' ), 'value' => 'routing' ),
-					),
-				),
-				array(
-					'id'       => 'assignees',
-					'name'     => 'assignees[]',
-					'multiple' => 'multiple',
-					'label'    => 'Select Assignees',
-					'type'     => 'select',
-					'choices'  => $account_choices,
-				),
-				array(
-					'name'  => 'routing',
-					'tooltip'   => __( 'Build assignee routing rules by adding conditions. Users and roles fields will appear in the first drop-down field. If the form contains any assignee fields they will also appear here. Select the assignee and define the condition for that assignee. Add as many routing rules as you need.', 'gravityflow' ),
-					'label' => __( 'Routing', 'gravityflowpaypal' ),
-					'type'  => 'routing',
-				),
-				array(
-					'name'  => 'instructions',
-					'label' => __( 'Instructions', 'gravityflowpaypal' ),
-					'type'  => 'checkbox_and_textarea',
-					'tooltip' => esc_html__( 'Activate this setting to display instructions to the user for the current step.', 'gravityflowpaypal' ),
-					'checkbox' => array(
-						'label' => esc_html__( 'Display instructions', 'gravityflowpaypal' ),
-					),
-					'textarea'  => array(
-						'use_editor' => true,
-					),
-				),
-				array(
-					'name'     => 'display_fields',
-					'label'    => __( 'Display Fields', 'gravityflowpaypal' ),
-					'tooltip'   => __( 'Select the fields to hide or display.', 'gravityflowpaypal' ),
-					'type'     => 'display_fields',
-				),
-				array(
-					'name'    => 'assignee_notification_enabled',
-					'label'   => 'Assignee Email',
-					'type'    => 'checkbox',
-					'choices' => array(
-						array(
-							'label'         => __( 'Enabled' ),
-							'name'          => 'assignee_notification_enabled',
-							'default_value' => 1,
-						),
-					),
-				),
-				array(
-					'name'  => 'assignee_notification_from_name',
-					'label' => __( 'From Name', 'gravityflowpaypal' ),
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_from_email',
-					'label' => __( 'From Email', 'gravityflowpaypal' ),
-					'type'  => 'text',
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'default_value' => '{admin_email}',
-				),
-				array(
-					'name'  => 'assignee_notification_reply_to',
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'label' => __( 'Reply To', 'gravityflowpaypal' ),
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_bcc',
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'label' => __( 'BCC', 'gravityflowpaypal' ),
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_subject',
-					'class' => 'fieldwidth-1 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'label' => __( 'Subject', 'gravityflowpaypal' ),
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_message',
-					'label' => 'Message',
-					'type'  => 'visual_editor',
-					'default_value' => '',
-				),
-				array(
-					'name'    => 'assignee_notification_autoformat',
-					'label'   => '',
-					'type'    => 'checkbox',
-					'choices' => array(
-						array(
-							'label'         => __( 'Disable auto-formatting', 'gravityflowpaypal' ),
-							'name'          => 'assignee_notification_disable_autoformat',
-							'default_value' => false,
-							'tooltip'       => __( 'Disable auto-formatting to prevent paragraph breaks being automatically inserted when using HTML to create the email message.', 'gravityflowpaypal' ),
-
-						),
-					),
-				),
-				array(
-					'name' => 'resend_assignee_email',
-					'label' => __( 'Send reminder', 'gravityflowpaypal' ),
-					'type' => 'checkbox_and_text',
-					'text' => array(
-						'default_value' => 7,
-						'before_input' => __( 'Resend the assignee email after', 'gravityflowpaypal' ),
-						'after_input' => ' ' . __( 'day(s)', 'gravityflowpaypal' ),
-					),
-				),
-				array(
-					'name'  => 'confirmation_message',
-					'label' => esc_html__( 'Confirmation Message', 'gravityflowpaypal' ),
-					'type'  => 'visual_editor',
+					'name'          => 'confirmation_message',
+					'label'         => esc_html__( 'Confirmation Message', 'gravityflowpaypal' ),
+					'type'          => 'visual_editor',
 					'default_value' => esc_html__( 'Thank you. Your payment is currently being processed', 'gravityflowpaypal' ),
 				),
 			);

@@ -50,7 +50,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 						'label'  => __( 'Assignee Email', 'gravityflow' ),
 						'id'     => 'tab_assignee_notification',
 						'fields' => $settings_api->get_setting_notification( array(
-							'resend_enabled' => true,
+							'checkbox_default_value' => true,
 						) ),
 					)
 				) ),

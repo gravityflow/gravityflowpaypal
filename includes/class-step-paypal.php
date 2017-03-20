@@ -17,7 +17,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 		protected $_class_name = 'GFPayPal';
 
 		public function get_label() {
-			return esc_html__( 'PayPal', 'gravityflow' );
+			return esc_html__( 'PayPal', 'gravityflowpaypal' );
 		}
 
 		public function get_icon_url() {
@@ -47,7 +47,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 				$settings_api->get_setting_display_fields(),
 				$settings_api->get_setting_notification_tabs( array(
 					array(
-						'label'  => __( 'Assignee Email', 'gravityflow' ),
+						'label'  => __( 'Assignee Email', 'gravityflowpaypal' ),
 						'id'     => 'tab_assignee_notification',
 						'fields' => $settings_api->get_setting_notification( array(
 							'checkbox_default_value' => true,
@@ -73,7 +73,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 			$assignees = $this->get_assignees();
 
 			if ( empty( $assignees ) ) {
-				$note = sprintf( __( '%s: not required', 'gravityflow' ), $this->get_name() );
+				$note = sprintf( __( '%s: not required', 'gravityflowpaypal' ), $this->get_name() );
 				$this->add_note( $note, 0 , 'gravityflow' );
 			} else {
 				foreach ( $assignees as $assignee ) {
@@ -162,13 +162,13 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 
 			$form_id = absint( $form['id'] );
 
-			$status_str            = __( 'Pending Payment', 'gravityflow' );
+			$status_str            = __( 'Pending Payment', 'gravityflowpaypal' );
 			$approve_icon      = '<i class="fa fa-check" style="color:green"></i>';
 			$input_step_status = $this->get_status();
 			if ( $input_step_status == 'complete' ) {
-				$status_str = $approve_icon . __( 'Complete', 'gravityflow' );
+				$status_str = $approve_icon . __( 'Complete', 'gravityflowpaypal' );
 			} elseif ( $input_step_status == 'queued' ) {
-				$status_str = __( 'Queued', 'gravityflow' );
+				$status_str = __( 'Queued', 'gravityflowpaypal' );
 			}
 
 			$display_step_status = (bool) $args['step_status'];
@@ -199,16 +199,16 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 							if ( $assignee_type == 'user_id' ) {
 								$user_info = get_user_by( 'id', $assignee_id );
 								$status_label = $this->get_status_label( $assignee_status );
-								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'User', 'gravityflow' ), $user_info->display_name,  $status_label );
+								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'User', 'gravityflowpaypal' ), $user_info->display_name,  $status_label );
 							} elseif ( $assignee_type == 'email' ) {
 								$email = $assignee_id;
 								$status_label = $this->get_status_label( $assignee_status );
-								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflow' ), $email,  $status_label );
+								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflowpaypal' ), $email,  $status_label );
 
 							} elseif ( $assignee_type == 'role' ) {
 								$status_label = $this->get_status_label( $assignee_status );
 								$role_name = translate_user_role( $assignee_id );
-								echo sprintf( '<li>%s: (%s)</li>', esc_html__( 'Role', 'gravityflow' ), $role_name, $status_label );
+								echo sprintf( '<li>%s: (%s)</li>', esc_html__( 'Role', 'gravityflowpaypal' ), $role_name, $status_label );
 								echo '<li>' . $role_name . ': ' . $assignee_status . '</li>';
 							}
 						}
@@ -257,7 +257,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 					<input type="hidden" name="workflow_paypal_step_id" value="<?php echo $this->get_id(); ?>" />
 					<br /><br />
 					<div style="text-align:right;">
-						<input class="button button-primary" type="submit" name="gravityflow_paypal_pay" value="<?php esc_html_e( 'Pay', 'gravityflow' ); ?>" />
+						<input class="button button-primary" type="submit" name="gravityflow_paypal_pay" value="<?php esc_html_e( 'Pay', 'gravityflowpaypal' ); ?>" />
 					</div>
 					<?php
 				}
@@ -288,11 +288,11 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 							$status_label = $this->get_status_label( $status );
 							switch ( $assignee_type ) {
 								case 'email':
-									echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflow' ), $this->get_id(),  $status_label );
+									echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflowpaypal' ), $this->get_id(),  $status_label );
 									break;
 								case 'user_id' :
 									$user_info = get_user_by( 'id', $assignee->get_id() );
-									echo '<li>' . esc_html__( 'User', 'gravityflow' ) . ': ' . $user_info->display_name . '<br />' . esc_html__( 'Status', 'gravityflow' ) . ': ' . esc_html( $status_label ) . '</li>';
+									echo '<li>' . esc_html__( 'User', 'gravityflowpaypal' ) . ': ' . $user_info->display_name . '<br />' . esc_html__( 'Status', 'gravityflowpaypal' ) . ': ' . esc_html( $status_label ) . '</li>';
 									break;
 								case 'role' :
 

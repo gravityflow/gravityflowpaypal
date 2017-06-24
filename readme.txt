@@ -44,6 +44,9 @@ The Gravity Flow PayPal Extension will work with any license of [Gravity Flow](h
 
 == ChangeLog ==
 
+= 1.0.3 =
+- Updated to use the common settings api.
+
 = 1.0.2 =
 - Added the Disable auto-formatting setting for the assignee email.
 - Fixed PHP notice.

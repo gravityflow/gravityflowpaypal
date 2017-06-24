@@ -17,7 +17,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 		protected $_class_name = 'GFPayPal';
 
 		public function get_label() {
-			return esc_html__( 'PayPal', 'gravityflow' );
+			return esc_html__( 'PayPal', 'gravityflowpaypal' );
 		}
 
 		public function get_icon_url() {
@@ -33,129 +33,31 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 
 			$settings = parent::get_settings();
 
-			$account_choices = gravity_flow()->get_users_as_choices();
+			if ( ! $this->is_supported() ) {
+				return $settings;
+			}
+
+			$settings_api = $this->get_common_settings_api();
 
 			$paypal_settings = array(
+				$settings_api->get_setting_assignee_type(),
+				$settings_api->get_setting_assignees(),
+				$settings_api->get_setting_assignee_routing(),
+				$settings_api->get_setting_instructions(),
+				$settings_api->get_setting_display_fields(),
+				$settings_api->get_setting_notification_tabs( array(
+					array(
+						'label'  => __( 'Assignee Email', 'gravityflowpaypal' ),
+						'id'     => 'tab_assignee_notification',
+						'fields' => $settings_api->get_setting_notification( array(
+							'checkbox_default_value' => true,
+						) ),
+					)
+				) ),
 				array(
-					'name'       => 'type',
-					'label'      => __( 'Assign To:', 'gravityflowpaypal' ),
-					'type'       => 'radio',
-					'default_value' => 'select',
-					'horizontal' => true,
-					'choices'    => array(
-						array( 'label' => __( 'Select Users', 'gravityflowpaypal' ), 'value' => 'select' ),
-						array( 'label' => __( 'Conditional Routing', 'gravityflowpaypal' ), 'value' => 'routing' ),
-					),
-				),
-				array(
-					'id'       => 'assignees',
-					'name'     => 'assignees[]',
-					'multiple' => 'multiple',
-					'label'    => 'Select Assignees',
-					'type'     => 'select',
-					'choices'  => $account_choices,
-				),
-				array(
-					'name'  => 'routing',
-					'tooltip'   => __( 'Build assignee routing rules by adding conditions. Users and roles fields will appear in the first drop-down field. If the form contains any assignee fields they will also appear here. Select the assignee and define the condition for that assignee. Add as many routing rules as you need.', 'gravityflow' ),
-					'label' => __( 'Routing', 'gravityflowpaypal' ),
-					'type'  => 'routing',
-				),
-				array(
-					'name'  => 'instructions',
-					'label' => __( 'Instructions', 'gravityflowpaypal' ),
-					'type'  => 'checkbox_and_textarea',
-					'tooltip' => esc_html__( 'Activate this setting to display instructions to the user for the current step.', 'gravityflowpaypal' ),
-					'checkbox' => array(
-						'label' => esc_html__( 'Display instructions', 'gravityflowpaypal' ),
-					),
-					'textarea'  => array(
-						'use_editor' => true,
-					),
-				),
-				array(
-					'name'     => 'display_fields',
-					'label'    => __( 'Display Fields', 'gravityflowpaypal' ),
-					'tooltip'   => __( 'Select the fields to hide or display.', 'gravityflowpaypal' ),
-					'type'     => 'display_fields',
-				),
-				array(
-					'name'    => 'assignee_notification_enabled',
-					'label'   => 'Assignee Email',
-					'type'    => 'checkbox',
-					'choices' => array(
-						array(
-							'label'         => __( 'Enabled' ),
-							'name'          => 'assignee_notification_enabled',
-							'default_value' => 1,
-						),
-					),
-				),
-				array(
-					'name'  => 'assignee_notification_from_name',
-					'label' => __( 'From Name', 'gravityflowpaypal' ),
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_from_email',
-					'label' => __( 'From Email', 'gravityflowpaypal' ),
-					'type'  => 'text',
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'default_value' => '{admin_email}',
-				),
-				array(
-					'name'  => 'assignee_notification_reply_to',
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'label' => __( 'Reply To', 'gravityflowpaypal' ),
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_bcc',
-					'class' => 'fieldwidth-2 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'label' => __( 'BCC', 'gravityflowpaypal' ),
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_subject',
-					'class' => 'fieldwidth-1 merge-tag-support mt-hide_all_fields mt-position-right ui-autocomplete-input',
-					'label' => __( 'Subject', 'gravityflowpaypal' ),
-					'type'  => 'text',
-				),
-				array(
-					'name'  => 'assignee_notification_message',
-					'label' => 'Message',
-					'type'  => 'visual_editor',
-					'default_value' => '',
-				),
-				array(
-					'name'    => 'assignee_notification_autoformat',
-					'label'   => '',
-					'type'    => 'checkbox',
-					'choices' => array(
-						array(
-							'label'         => __( 'Disable auto-formatting', 'gravityflowpaypal' ),
-							'name'          => 'assignee_notification_disable_autoformat',
-							'default_value' => false,
-							'tooltip'       => __( 'Disable auto-formatting to prevent paragraph breaks being automatically inserted when using HTML to create the email message.', 'gravityflowpaypal' ),
-
-						),
-					),
-				),
-				array(
-					'name' => 'resend_assignee_email',
-					'label' => __( 'Send reminder', 'gravityflowpaypal' ),
-					'type' => 'checkbox_and_text',
-					'text' => array(
-						'default_value' => 7,
-						'before_input' => __( 'Resend the assignee email after', 'gravityflowpaypal' ),
-						'after_input' => ' ' . __( 'day(s)', 'gravityflowpaypal' ),
-					),
-				),
-				array(
-					'name'  => 'confirmation_message',
-					'label' => esc_html__( 'Confirmation Message', 'gravityflowpaypal' ),
-					'type'  => 'visual_editor',
+					'name'          => 'confirmation_message',
+					'label'         => esc_html__( 'Confirmation Message', 'gravityflowpaypal' ),
+					'type'          => 'visual_editor',
 					'default_value' => esc_html__( 'Thank you. Your payment is currently being processed', 'gravityflowpaypal' ),
 				),
 			);
@@ -171,7 +73,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 			$assignees = $this->get_assignees();
 
 			if ( empty( $assignees ) ) {
-				$note = sprintf( __( '%s: not required', 'gravityflow' ), $this->get_name() );
+				$note = sprintf( __( '%s: not required', 'gravityflowpaypal' ), $this->get_name() );
 				$this->add_note( $note, 0 , 'gravityflow' );
 			} else {
 				foreach ( $assignees as $assignee ) {
@@ -260,13 +162,13 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 
 			$form_id = absint( $form['id'] );
 
-			$status_str            = __( 'Pending Payment', 'gravityflow' );
+			$status_str            = __( 'Pending Payment', 'gravityflowpaypal' );
 			$approve_icon      = '<i class="fa fa-check" style="color:green"></i>';
 			$input_step_status = $this->get_status();
 			if ( $input_step_status == 'complete' ) {
-				$status_str = $approve_icon . __( 'Complete', 'gravityflow' );
+				$status_str = $approve_icon . __( 'Complete', 'gravityflowpaypal' );
 			} elseif ( $input_step_status == 'queued' ) {
-				$status_str = __( 'Queued', 'gravityflow' );
+				$status_str = __( 'Queued', 'gravityflowpaypal' );
 			}
 
 			$display_step_status = (bool) $args['step_status'];
@@ -297,16 +199,16 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 							if ( $assignee_type == 'user_id' ) {
 								$user_info = get_user_by( 'id', $assignee_id );
 								$status_label = $this->get_status_label( $assignee_status );
-								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'User', 'gravityflow' ), $user_info->display_name,  $status_label );
+								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'User', 'gravityflowpaypal' ), $user_info->display_name,  $status_label );
 							} elseif ( $assignee_type == 'email' ) {
 								$email = $assignee_id;
 								$status_label = $this->get_status_label( $assignee_status );
-								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflow' ), $email,  $status_label );
+								echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflowpaypal' ), $email,  $status_label );
 
 							} elseif ( $assignee_type == 'role' ) {
 								$status_label = $this->get_status_label( $assignee_status );
 								$role_name = translate_user_role( $assignee_id );
-								echo sprintf( '<li>%s: (%s)</li>', esc_html__( 'Role', 'gravityflow' ), $role_name, $status_label );
+								echo sprintf( '<li>%s: (%s)</li>', esc_html__( 'Role', 'gravityflowpaypal' ), $role_name, $status_label );
 								echo '<li>' . $role_name . ': ' . $assignee_status . '</li>';
 							}
 						}
@@ -355,7 +257,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 					<input type="hidden" name="workflow_paypal_step_id" value="<?php echo $this->get_id(); ?>" />
 					<br /><br />
 					<div style="text-align:right;">
-						<input class="button button-primary" type="submit" name="gravityflow_paypal_pay" value="<?php esc_html_e( 'Pay', 'gravityflow' ); ?>" />
+						<input class="button button-primary" type="submit" name="gravityflow_paypal_pay" value="<?php esc_html_e( 'Pay', 'gravityflowpaypal' ); ?>" />
 					</div>
 					<?php
 				}
@@ -386,11 +288,11 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 							$status_label = $this->get_status_label( $status );
 							switch ( $assignee_type ) {
 								case 'email':
-									echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflow' ), $this->get_id(),  $status_label );
+									echo sprintf( '<li>%s: %s (%s)</li>', esc_html__( 'Email', 'gravityflowpaypal' ), $this->get_id(),  $status_label );
 									break;
 								case 'user_id' :
 									$user_info = get_user_by( 'id', $assignee->get_id() );
-									echo '<li>' . esc_html__( 'User', 'gravityflow' ) . ': ' . $user_info->display_name . '<br />' . esc_html__( 'Status', 'gravityflow' ) . ': ' . esc_html( $status_label ) . '</li>';
+									echo '<li>' . esc_html__( 'User', 'gravityflowpaypal' ) . ': ' . $user_info->display_name . '<br />' . esc_html__( 'Status', 'gravityflowpaypal' ) . ': ' . esc_html( $status_label ) . '</li>';
 									break;
 								case 'role' :
 

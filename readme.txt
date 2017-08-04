@@ -44,6 +44,9 @@ The Gravity Flow PayPal Extension will work with any license of [Gravity Flow](h
 
 == ChangeLog ==
 
+= 1.0.4 =
+- Updated Members 2.0 integration to use human readable labels for the capabilities. Requires Gravity Flow 1.8.1 or greater.
+
 = 1.0.3 =
 - Updated to use the common settings api.
 

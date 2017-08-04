@@ -60,6 +60,23 @@ if ( class_exists( 'GFForms' ) ) {
 		public function init() {
 			parent::init();
 			add_filter( 'gravityflow_permission_denied_message_entry_detail', array( $this, 'filter_gravityflow_permission_denied_message_entry_detail' ), 10, 2 );
+
+		/**
+		 * Add the extension capabilities to the Gravity Flow group in Members.
+		 *
+		 * @since 1.0.4
+		 *
+		 * @param array $caps The capabilities and their human readable labels.
+		 *
+		 * @return array
+		 */
+		public function get_members_capabilities( $caps ) {
+			$prefix = $this->get_short_title() . ': ';
+
+			$caps['gravityflowpaypal_settings']  = $prefix . __( 'Manage Settings', 'gravityflowpaypal' );
+			$caps['gravityflowpaypal_uninstall'] = $prefix . __( 'Uninstall', 'gravityflowpaypal' );
+
+			return $caps;
 		}
 
 		public function action_gform_paypal_fulfillment( $entry, $feed, $transaction_id, $amount ) {

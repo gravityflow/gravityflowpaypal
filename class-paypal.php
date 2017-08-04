@@ -127,8 +127,6 @@ if ( class_exists( 'GFForms' ) ) {
 			// todo: log note
 			// todo: log event
 
-			$validation_result = array( 'is_valid' => true, 'form' => $form, 'failed_validation_page' => 0 );
-			$add_on->validation( $validation_result );
 			$form_id = absint( $form['id'] );
 			$feed = $add_on->get_paypal_feed( $form_id, $entry );
 			$submission_data = $add_on->get_submission_data( $feed, $form, $entry );

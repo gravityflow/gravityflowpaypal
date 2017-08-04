@@ -49,17 +49,18 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public function pre_init() {
 			parent::pre_init();
-			add_action( 'gform_paypal_fulfillment', array(
-				$this,
-				'action_gform_paypal_fulfillment'
-			), 10, 4 );
+			add_action( 'gform_paypal_fulfillment', array( $this, 'action_gform_paypal_fulfillment' ), 10, 4 );
 			add_action( 'wp', array( $this, 'maybe_redirect' ), 9 );
 			add_action( 'admin_init', array( $this, 'maybe_redirect' ), 9 );
 		}
 
 		public function init() {
 			parent::init();
-			add_filter( 'gravityflow_permission_denied_message_entry_detail', array( $this, 'filter_gravityflow_permission_denied_message_entry_detail' ), 10, 2 );
+			add_filter( 'gravityflow_permission_denied_message_entry_detail', array(
+				$this,
+				'filter_gravityflow_permission_denied_message_entry_detail'
+			), 10, 2 );
+		}
 
 		/**
 		 * Add the extension capabilities to the Gravity Flow group in Members.
@@ -81,17 +82,18 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public function action_gform_paypal_fulfillment( $entry, $feed, $transaction_id, $amount ) {
 			$this->log_debug( __METHOD__ . '() - starting' );
-			$api = new Gravity_Flow_API( $entry['form_id'] );
+			$api          = new Gravity_Flow_API( $entry['form_id'] );
 			$current_step = $api->get_current_step( $entry );
 			if ( $current_step && $current_step->get_type() == 'paypal' ) {
 
 				$custom = $_REQUEST['custom'];
 				list( $entry_id, $entry_id_hash, $assignee_key_b64, $assignee_key_hash ) = explode( '|', $custom );
-				$assignee_key = base64_decode( $assignee_key_b64 );
+				$assignee_key            = base64_decode( $assignee_key_b64 );
 				$assignee_key_hash_check = substr( wp_hash( 'gflow' . $assignee_key ), 0, 4 );
 
 				if ( empty( $assignee_key ) || empty( $assignee_key_hash ) || $assignee_key_hash !== $assignee_key_hash_check ) {
 					$this->log_debug( __METHOD__ . '() - invalid assignee' );
+
 					return;
 				}
 
@@ -117,18 +119,18 @@ if ( class_exists( 'GFForms' ) ) {
 				return;
 			}
 
-			/* @var GFPayPal $add_on */
-			$add_on = gf_paypal();
-
-			$entry_id = absint( rgget( 'lid' ) );
-			$entry = GFAPI::get_entry( $entry_id );
-			$form = GFAPI::get_form( $entry['form_id'] );
-
 			// todo: log note
 			// todo: log event
 
-			$form_id = absint( $form['id'] );
-			$feed = $add_on->get_paypal_feed( $form_id, $entry );
+			$entry_id = absint( rgget( 'lid' ) );
+			$entry    = GFAPI::get_entry( $entry_id );
+			$form     = GFAPI::get_form( $entry['form_id'] );
+			$form_id  = absint( $form['id'] );
+
+			/* @var GFPayPal $add_on */
+			$add_on = gf_paypal();
+
+			$feed            = $add_on->get_paypal_feed( $form_id, $entry );
 			$submission_data = $add_on->get_submission_data( $feed, $form, $entry );
 
 			add_filter( 'gform_paypal_return_url', array( $this, 'filter_gform_paypal_return_url' ), 10, 4 );
@@ -143,7 +145,7 @@ if ( class_exists( 'GFForms' ) ) {
 			$custom = $vars['custom'];
 			$custom .= '|' . base64_encode( $assignee_key );
 			$custom .= '|' . substr( wp_hash( 'gflow' . $assignee_key ), 0, 4 );
-			$url = add_query_arg( array( 'custom' => $custom ), $url );
+			$url    = add_query_arg( array( 'custom' => $custom ), $url );
 			header( "Location: {$url}" );
 		}
 
@@ -159,12 +161,12 @@ if ( class_exists( 'GFForms' ) ) {
 				parse_str( $str, $query );
 				if ( wp_hash( 'ids=' . $query['ids'] ) == $query['hash'] ) {
 					list( $form_id, $entry_id ) = explode( '|', $query['ids'] );
-					$entry = GFAPI::get_entry( $entry_id );
-					$step_id = rgget( 'workflow_step_id' );
-					$step_id_hash = rgget( 'workflow_step_id_hash' );
+					$entry              = GFAPI::get_entry( $entry_id );
+					$step_id            = rgget( 'workflow_step_id' );
+					$step_id_hash       = rgget( 'workflow_step_id_hash' );
 					$step_id_hash_check = wp_hash( 'gflow' . $step_id );
 					if ( $step_id_hash === $step_id_hash_check ) {
-						$api = new Gravity_Flow_Api( $form_id );
+						$api  = new Gravity_Flow_Api( $form_id );
 						$step = $api->get_step( $step_id, $entry );
 						if ( $step ) {
 							$message = $step->confirmation_message;
@@ -172,6 +174,7 @@ if ( class_exists( 'GFForms' ) ) {
 					}
 				}
 			}
+
 			return $message;
 		}
 

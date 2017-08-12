@@ -56,10 +56,7 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public function init() {
 			parent::init();
-			add_filter( 'gravityflow_permission_denied_message_entry_detail', array(
-				$this,
-				'filter_gravityflow_permission_denied_message_entry_detail'
-			), 10, 2 );
+			add_filter( 'gravityflow_permission_denied_message_entry_detail', array( $this, 'filter_gravityflow_permission_denied_message_entry_detail' ), 10, 2 );
 		}
 
 		/**

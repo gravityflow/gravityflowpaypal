@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[gravityflow.gravityflowpaypal]
+[gravityflowpaypal.gravityflowpaypal]
 file_filter = languages/gravityflowpaypal-<lang>.po
 source_file = languages/gravityflowpaypal.pot
 source_lang = en_US

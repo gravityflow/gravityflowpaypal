@@ -1,7 +1,7 @@
 Gravity Flow PayPal Extension
 ==============================
 
-Gravity Flow is a commercial plugin for WordPress which provides a Workflow platform for forms created in Gravity Forms.
+Gravity Flow is a premium plugin for WordPress which provides a Workflow platform for forms created in Gravity Forms.
 
 Gravity Flow PayPal Extension is a commercial plugin for WordPress which allows Gravity Flow administrators to create a workflow step that waits for payment before continuing.
 

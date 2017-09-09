@@ -1,0 +1,195 @@
+# Copyright 2015-2016 Steven Henty.
+# Translators:
+# Süha Karalar <suhakaralar@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: gravityflowpaypal\n"
+"Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
+"POT-Creation-Date: 2016-11-16 22:28:25+00:00\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Süha Karalar <suhakaralar@gmail.com>, 2017\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/gravityflow/teams/50678/tr_TR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gravity Flow Build Script\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Textdomain-Support: yes\n"
+
+#: class-paypal.php:89
+msgid "Payment has been completed. Transaction ID: %s"
+msgstr "Ödeme tamamlandı. İşlem Kimliği:%s"
+
+#: includes/class-step-paypal.php:20
+msgid "PayPal"
+msgstr "Paypal"
+
+#: includes/class-step-paypal.php:41
+msgid "Assign To:"
+msgstr "Görevlendir:"
+
+#: includes/class-step-paypal.php:46
+msgid "Select Users"
+msgstr "Kullanıcı Seç"
+
+#: includes/class-step-paypal.php:47
+msgid "Conditional Routing"
+msgstr "Koşullu Yönlendirme"
+
+#: includes/class-step-paypal.php:60
+msgid ""
+"Build assignee routing rules by adding conditions. Users and roles fields "
+"will appear in the first drop-down field. If the form contains any assignee "
+"fields they will also appear here. Select the assignee and define the "
+"condition for that assignee. Add as many routing rules as you need."
+msgstr ""
+"Görevli yönlendirmelerini ayarlamak için kurallar oluşturun. Kullanıcılar ve"
+" roller alanları ilk açılır kutu alanında görünür. Formunuz herhangi bir "
+"görevli alanı içeriyorsa, onlar da burada görünür. Görevlileri seçin ve "
+"koşullarını tanımlayın. İstediğiniz kadar dolaşım kuralı ekleyebilirsiniz."
+
+#: includes/class-step-paypal.php:61
+msgid "Routing"
+msgstr "Dolaştırma"
+
+#: includes/class-step-paypal.php:66
+msgid "Instructions"
+msgstr "Yönergeler"
+
+#: includes/class-step-paypal.php:68
+msgid ""
+"Activate this setting to display instructions to the user for the current "
+"step."
+msgstr ""
+"Mevcut adımda kullanıcıya yönergeleri göstermek için bu ayarı etkinleştirin."
+
+#: includes/class-step-paypal.php:70
+msgid "Display instructions"
+msgstr "Yönergeleri görüntüle"
+
+#: includes/class-step-paypal.php:78
+msgid "Display Fields"
+msgstr "Alanları Göster"
+
+#: includes/class-step-paypal.php:79
+msgid "Select the fields to hide or display."
+msgstr "Gösterilecek yada gizlenecek alanları seçin."
+
+#: includes/class-step-paypal.php:88
+msgid "Enabled"
+msgstr "Etkin"
+
+#: includes/class-step-paypal.php:96
+msgid "From Name"
+msgstr "Gönderen Adı"
+
+#: includes/class-step-paypal.php:102
+msgid "From Email"
+msgstr "Gönderen E-Posta"
+
+#: includes/class-step-paypal.php:110
+msgid "Reply To"
+msgstr "- Yanıtla"
+
+#: includes/class-step-paypal.php:116
+msgid "BCC"
+msgstr "Gizli Alıcı Posta Adresi"
+
+#: includes/class-step-paypal.php:122
+msgid "Subject"
+msgstr "Konu"
+
+#: includes/class-step-paypal.php:137
+msgid "Disable auto-formatting"
+msgstr "Otomatik biçimlendirmeyi devre dışı bırak"
+
+#: includes/class-step-paypal.php:140
+msgid ""
+"Disable auto-formatting to prevent paragraph breaks being automatically "
+"inserted when using HTML to create the email message."
+msgstr ""
+"HTML e-posta iletisi oluştururken paragraf sonlarının eklenmesini engellemek"
+" için Otomatik Biçimlendirmeyi devre dışı bırakın."
+
+#: includes/class-step-paypal.php:147
+msgid "Send reminder"
+msgstr "Hatırlatma Gönder"
+
+#: includes/class-step-paypal.php:151
+msgid "Resend the assignee email after"
+msgstr "Şu koşuldan sonra görevliye epostayı yeniden gönder"
+
+#: includes/class-step-paypal.php:152
+msgid "day(s)"
+msgstr "Gün"
+
+#: includes/class-step-paypal.php:157
+msgid "Confirmation Message"
+msgstr "Onay Mesajı"
+
+#: includes/class-step-paypal.php:159
+msgid "Thank you. Your payment is currently being processed"
+msgstr "Teşekkürler. Ödemeniz şu anda işleniyor"
+
+#: includes/class-step-paypal.php:174
+msgid "%s: not required"
+msgstr "%s: gerekli değil"
+
+#: includes/class-step-paypal.php:240
+msgid "Pending Payment"
+msgstr "Ödeme Bekleniyor"
+
+#: includes/class-step-paypal.php:244
+msgid "Complete"
+msgstr "Tamamlandı"
+
+#: includes/class-step-paypal.php:246
+msgid "Queued"
+msgstr "Sıraya alındı"
+
+#: includes/class-step-paypal.php:277 includes/class-step-paypal.php:370
+msgid "User"
+msgstr "Kullanıcı"
+
+#: includes/class-step-paypal.php:281 includes/class-step-paypal.php:366
+msgid "Email"
+msgstr "E-posta"
+
+#: includes/class-step-paypal.php:286
+msgid "Role"
+msgstr "Rol"
+
+#: includes/class-step-paypal.php:335
+msgid "Pay"
+msgstr "Öde"
+
+#: includes/class-step-paypal.php:370
+msgid "Status"
+msgstr "Durum"
+
+#. Plugin Name of the plugin/theme
+msgid "Gravity Flow PayPal Extension"
+msgstr "Gravity Flow PayPal Uzantısı"
+
+#. Plugin URI of the plugin/theme
+msgid "http://gravityflow.io"
+msgstr "http://gravityflow.io"
+
+#. Description of the plugin/theme
+msgid "PayPal Extension for Gravity Flow."
+msgstr "Gravity Flow için PayPal Uzantısı"
+
+#. Author of the plugin/theme
+msgid "Steve Henty"
+msgstr "Steve Henty"
+
+#. Author URI of the plugin/theme
+msgid "http://www.stevenhenty.com"
+msgstr "http://www.stevenhenty.com"

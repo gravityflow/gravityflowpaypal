@@ -13,7 +13,7 @@ if ( class_exists( 'GFForms' ) ) {
 		public $edd_item_name = GRAVITY_FLOW_PAYPAL_EDD_ITEM_NAME;
 
 		// The Framework will display an appropriate message on the plugins page if necessary
-		protected $_min_gravityforms_version = '1.9.10';
+		protected $_min_gravityforms_version = '2.1';
 
 		protected $_slug = 'gravityflowpaypal';
 
@@ -46,6 +46,27 @@ if ( class_exists( 'GFForms' ) ) {
 		private function __clone() {
 		} /* do nothing */
 
+		/**
+		 * The minimum Gravity Flow and PayPal Add-On versions required to use this extension.
+		 *
+		 * @since 1.1.1-dev
+		 *
+		 * @return array
+		 */
+		public function minimum_requirements() {
+
+			return array(
+				'add-ons' => array(
+					'gravityflow'        => array(
+						'version' => '1.6'
+					),
+					'gravityformspaypal' => array(
+						'version' => '2.7'
+					),
+				)
+			);
+
+		}
 
 		public function pre_init() {
 			parent::pre_init();

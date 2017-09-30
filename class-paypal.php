@@ -61,7 +61,8 @@ if ( class_exists( 'GFForms' ) ) {
 						'version' => '1.6'
 					),
 					'gravityformspaypal' => array(
-						'version' => '2.7'
+						'version' => '2.7',
+						'name'    => 'Gravity Forms PayPal Standard'
 					),
 				)
 			);

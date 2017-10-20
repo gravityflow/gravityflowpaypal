@@ -74,7 +74,7 @@ if ( class_exists( 'Gravity_Flow_Step' ) ) {
 
 			if ( empty( $assignees ) ) {
 				$note = sprintf( __( '%s: not required', 'gravityflowpaypal' ), $this->get_name() );
-				$this->add_note( $note, 0 , 'gravityflow' );
+				$this->add_note( $note, 0 , 'gravityflowpaypal' );
 			} else {
 				foreach ( $assignees as $assignee ) {
 					$assignee->update_status( 'pending' );

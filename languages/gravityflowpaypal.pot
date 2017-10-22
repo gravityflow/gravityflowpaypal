@@ -1,9 +1,9 @@
 # Copyright 2015-2017 Steven Henty.
 msgid ""
 msgstr ""
-"Project-Id-Version: Gravity Flow PayPal Extension 1.1\n"
+"Project-Id-Version: Gravity Flow PayPal Extension 1.1.1-dev\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2017-09-09 14:10:53+00:00\n"
+"POT-Creation-Date: 2017-10-22 17:22:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,15 +24,15 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: class-paypal.php:74
+#: class-paypal.php:96
 msgid "Manage Settings"
 msgstr ""
 
-#: class-paypal.php:75
+#: class-paypal.php:97
 msgid "Uninstall"
 msgstr ""
 
-#: class-paypal.php:105
+#: class-paypal.php:127
 msgid "Payment has been completed. Transaction ID: %s"
 msgstr ""
 

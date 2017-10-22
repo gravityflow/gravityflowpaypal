@@ -1,13 +1,13 @@
-# Copyright 2015-2016 Steven Henty.
+# Copyright 2015-2017 Steven Henty.
 # Translators:
-# Samuel Aguilera 🚀 <registros@samuelaguilera.com>, 2016
+# FX Bénard <fxb@wp-translations.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: gravityflowpaypal\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2016-11-16 22:28:25+00:00\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Samuel Aguilera 🚀 <registros@samuelaguilera.com>, 2016\n"
+"POT-Creation-Date: 2017-09-09 14:10:53+00:00\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FX Bénard <fxb@wp-translations.org>, 2016\n"
 "Language-Team: Spanish (Spain) (https://www.transifex.com/gravityflow/teams/50678/es_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -23,7 +23,15 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: class-paypal.php:89
+#: class-paypal.php:74
+msgid "Manage Settings"
+msgstr "Gestionar ajustes"
+
+#: class-paypal.php:75
+msgid "Uninstall"
+msgstr "Desinstalar"
+
+#: class-paypal.php:105
 msgid "Payment has been completed. Transaction ID: %s"
 msgstr "El pago ha sido completado. ID de transacción: %s"
 
@@ -31,148 +39,51 @@ msgstr "El pago ha sido completado. ID de transacción: %s"
 msgid "PayPal"
 msgstr "PayPal"
 
-#: includes/class-step-paypal.php:41
-msgid "Assign To:"
-msgstr "Asignar a:"
+#: includes/class-step-paypal.php:50
+msgid "Assignee Email"
+msgstr "Email del encargado"
 
-#: includes/class-step-paypal.php:46
-msgid "Select Users"
-msgstr "Seleccionar usuarios"
-
-#: includes/class-step-paypal.php:47
-msgid "Conditional Routing"
-msgstr "Enrutamiento conditional"
-
-#: includes/class-step-paypal.php:60
-msgid ""
-"Build assignee routing rules by adding conditions. Users and roles fields "
-"will appear in the first drop-down field. If the form contains any assignee "
-"fields they will also appear here. Select the assignee and define the "
-"condition for that assignee. Add as many routing rules as you need."
-msgstr ""
-"Construye reglas de enrutamiento añadiendo condiciones. En el primer "
-"desplegable aparecerán los usuarios y roles. Si el campo contiene cualquier "
-"campo de encargado también aparecerá aquí. Selecciona el encargado y define "
-"la condición para ese encargado. Añade tantas reglas de enrutamiento como "
-"necesites."
+#: includes/class-step-paypal.php:59
+msgid "Confirmation Message"
+msgstr "Mensaje de confirmación"
 
 #: includes/class-step-paypal.php:61
-msgid "Routing"
-msgstr "Enrutamiento"
-
-#: includes/class-step-paypal.php:66
-msgid "Instructions"
-msgstr "Instrucciones"
-
-#: includes/class-step-paypal.php:68
-msgid ""
-"Activate this setting to display instructions to the user for the current "
-"step."
-msgstr ""
-"Activa este ajuste para mostrar instrucciones para el paso actual al "
-"usuario."
-
-#: includes/class-step-paypal.php:70
-msgid "Display instructions"
-msgstr "Mostrar instrucciones"
-
-#: includes/class-step-paypal.php:78
-msgid "Display Fields"
-msgstr "Mostrar campos"
-
-#: includes/class-step-paypal.php:79
-msgid "Select the fields to hide or display."
-msgstr "Selecciona los campos a ocultar o mostrar."
-
-#: includes/class-step-paypal.php:88
-msgid "Enabled"
-msgstr "Activado"
-
-#: includes/class-step-paypal.php:96
-msgid "From Name"
-msgstr "Nombre remitente"
-
-#: includes/class-step-paypal.php:102
-msgid "From Email"
-msgstr "Email remitente"
-
-#: includes/class-step-paypal.php:110
-msgid "Reply To"
-msgstr "Responder a"
-
-#: includes/class-step-paypal.php:116
-msgid "BCC"
-msgstr "BCC"
-
-#: includes/class-step-paypal.php:122
-msgid "Subject"
-msgstr "Asunto"
-
-#: includes/class-step-paypal.php:137
-msgid "Disable auto-formatting"
-msgstr "Desactivar auto formato"
-
-#: includes/class-step-paypal.php:140
-msgid ""
-"Disable auto-formatting to prevent paragraph breaks being automatically "
-"inserted when using HTML to create the email message."
-msgstr ""
-"Desactiva el auto formato para evitar que se añadan automáticamente saltos "
-"de párrafo cuando uses HTML para crear el mensaje del email."
-
-#: includes/class-step-paypal.php:147
-msgid "Send reminder"
-msgstr "Enviar recordatorio"
-
-#: includes/class-step-paypal.php:151
-msgid "Resend the assignee email after"
-msgstr "Reenviar email de asignado después"
-
-#: includes/class-step-paypal.php:152
-msgid "day(s)"
-msgstr "día(s)"
-
-#: includes/class-step-paypal.php:157
-msgid "Confirmation Message"
-msgstr "Mensaje de confirmación."
-
-#: includes/class-step-paypal.php:159
 msgid "Thank you. Your payment is currently being processed"
 msgstr "Gracias. Tu pago está siendo procesado."
 
-#: includes/class-step-paypal.php:174
+#: includes/class-step-paypal.php:76
 msgid "%s: not required"
 msgstr "%s: no obligatorio"
 
-#: includes/class-step-paypal.php:240
+#: includes/class-step-paypal.php:165
 msgid "Pending Payment"
-msgstr "Pago pendiente"
+msgstr "Pago Pendiente"
 
-#: includes/class-step-paypal.php:244
+#: includes/class-step-paypal.php:169
 msgid "Complete"
 msgstr "Completado"
 
-#: includes/class-step-paypal.php:246
+#: includes/class-step-paypal.php:171
 msgid "Queued"
 msgstr "En cola"
 
-#: includes/class-step-paypal.php:277 includes/class-step-paypal.php:370
+#: includes/class-step-paypal.php:202 includes/class-step-paypal.php:295
 msgid "User"
 msgstr "Usuario"
 
-#: includes/class-step-paypal.php:281 includes/class-step-paypal.php:366
+#: includes/class-step-paypal.php:206 includes/class-step-paypal.php:291
 msgid "Email"
 msgstr "Email"
 
-#: includes/class-step-paypal.php:286
+#: includes/class-step-paypal.php:211
 msgid "Role"
 msgstr "Rol"
 
-#: includes/class-step-paypal.php:335
+#: includes/class-step-paypal.php:260
 msgid "Pay"
 msgstr "Pagar"
 
-#: includes/class-step-paypal.php:370
+#: includes/class-step-paypal.php:295
 msgid "Status"
 msgstr "Estado"
 

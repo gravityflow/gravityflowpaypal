@@ -8,11 +8,11 @@ msgstr ""
 "POT-Creation-Date: 2017-09-09 14:10:53+00:00\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FX Bénard <fxb@wp-translations.org>, 2017\n"
-"Language-Team: Turkish (Turkey) (https://www.transifex.com/gravityflow/teams/50678/tr_TR/)\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/gravityflow/teams/50678/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gravity Flow Build Script\n"
 "X-Poedit-Basepath: ../\n"
@@ -25,71 +25,71 @@ msgstr ""
 
 #: class-paypal.php:74
 msgid "Manage Settings"
-msgstr "Ayarları yönet"
+msgstr ""
 
 #: class-paypal.php:75
 msgid "Uninstall"
-msgstr "Kaldır"
+msgstr "卸载"
 
 #: class-paypal.php:105
 msgid "Payment has been completed. Transaction ID: %s"
-msgstr "Ödeme tamamlandı. İşlem Kimliği:%s"
+msgstr ""
 
 #: includes/class-step-paypal.php:20
 msgid "PayPal"
-msgstr "PayPal"
+msgstr "贝宝"
 
 #: includes/class-step-paypal.php:50
 msgid "Assignee Email"
-msgstr "Görevli e-postası"
+msgstr "负责人电子邮件"
 
 #: includes/class-step-paypal.php:59
 msgid "Confirmation Message"
-msgstr "Onay mesajı"
+msgstr "确认消息"
 
 #: includes/class-step-paypal.php:61
 msgid "Thank you. Your payment is currently being processed"
-msgstr "Teşekkürler. Ödemeniz şu anda işleniyor"
+msgstr ""
 
 #: includes/class-step-paypal.php:76
 msgid "%s: not required"
-msgstr "%s: gerekli değil"
+msgstr ""
 
 #: includes/class-step-paypal.php:165
 msgid "Pending Payment"
-msgstr "Ödeme bekleniyor"
+msgstr ""
 
 #: includes/class-step-paypal.php:169
 msgid "Complete"
-msgstr "Tamamlandı"
+msgstr "完成"
 
 #: includes/class-step-paypal.php:171
 msgid "Queued"
-msgstr "Sıraya alındı"
+msgstr "已队列"
 
 #: includes/class-step-paypal.php:202 includes/class-step-paypal.php:295
 msgid "User"
-msgstr "Kullanıcı"
+msgstr "用户"
 
 #: includes/class-step-paypal.php:206 includes/class-step-paypal.php:291
 msgid "Email"
-msgstr "E-posta"
+msgstr "电子邮件"
 
 #: includes/class-step-paypal.php:211
 msgid "Role"
-msgstr "Rol"
+msgstr "角色"
 
 #: includes/class-step-paypal.php:260
 msgid "Pay"
-msgstr "Öde"
+msgstr ""
 
 #: includes/class-step-paypal.php:295
 msgid "Status"
-msgstr "Durum"
+msgstr "状态"
 
 #. Plugin Name of the plugin/theme
 msgid "Gravity Flow PayPal Extension"
-msgstr "Gravity Flow PayPal Uzantısı"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "http://gravityflow.io"
@@ -97,12 +97,12 @@ msgstr "http://gravityflow.io"
 
 #. Description of the plugin/theme
 msgid "PayPal Extension for Gravity Flow."
-msgstr "Gravity Flow için PayPal Uzantısı"
+msgstr ""
 
 #. Author of the plugin/theme
 msgid "Steve Henty"
-msgstr "Steven Henty"
+msgstr "Steve Henty"
 
 #. Author URI of the plugin/theme
 msgid "http://www.stevenhenty.com"
-msgstr "http://www.stevenhenty.com"
+msgstr ""

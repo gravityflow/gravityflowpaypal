@@ -41,7 +41,8 @@ class Gravity_Flow_Paypal_Bootstrap {
 
 		Gravity_Flow_Steps::register( new Gravity_Flow_Step_Feed_Paypal() );
 
-		gravity_flow_paypal();
+		// Registers the class name with GFAddOn.
+		GFAddOn::register( 'Gravity_Flow_PayPal' );
 	}
 }
 

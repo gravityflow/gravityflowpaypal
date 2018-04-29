@@ -4,12 +4,12 @@ Plugin Name: Gravity Flow PayPal Extension
 Plugin URI: http://gravityflow.io
 Description: PayPal Extension for Gravity Flow.
 Version: 1.1.1-dev
-Author: Steve Henty
-Author URI: http://www.stevenhenty.com
+Author: Gravity Flow
+Author URI: https://gravityflow.io
 License: GPL-3.0+
 
 ------------------------------------------------------------------------
-Copyright 2015-2016 Steven Henty
+Copyright 2015-2018 Steven Henty S.L.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as

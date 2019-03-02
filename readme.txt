@@ -44,6 +44,9 @@ The Gravity Flow PayPal Extension will work with any license of [Gravity Flow](h
 
 == ChangeLog ==
 
+= 1.2 =
+- Added support for the license key constant GRAVITY_FLOW_PAYPAL_LICENSE_KEY.
+
 = 1.1 =
 - Added the Disable auto-formatting setting for the assignee email.
 - Updated Members 2.0 integration to use human readable labels for the capabilities. Requires Gravity Flow 1.8.1 or greater.

@@ -12,12 +12,9 @@
     "grunt-contrib-uglify": "^3.3.0",
     "grunt-dropbox": "https://github.com/stevehenty/grunt-dropbox/tarball/master",
     "grunt-md5sum": "^2.0.1",
-    "grunt-php": "^1.1.1",
-    "grunt-phpunit": "^0.3.6",
     "grunt-potomo": "^3.3.3",
     "grunt-shell": "^1.1.1",
-    "grunt-version": "^0.3.1",
-    "grunt-wp-i18n": "^0.4.5",
-    "matchdep": "~0.1.2"
+    "grunt-wp-i18n": "^1.0.2",
+    "matchdep": "~2.0.0"
   }
 }
